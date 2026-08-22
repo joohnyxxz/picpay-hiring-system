@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Funcionario {
-    private int id;
+    private Integer id;
     @NotBlank(message = "O nome é obrigatório")
     private String nome;
     @NotBlank(message = "O e-mail é obrigatório")
