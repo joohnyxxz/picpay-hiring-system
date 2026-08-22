@@ -24,7 +24,7 @@ public class FuncionarioService {
         return funcionarios;
     }
 
-    public Funcionario buscarFuncionario(int idFuncionario) {
+    public Funcionario buscarFuncionario(Integer idFuncionario) {
         for (Funcionario f : funcionarios) {
             if (f.getId() == idFuncionario) {
                 return f;
@@ -33,7 +33,7 @@ public class FuncionarioService {
         return null;
     }
 
-    public Funcionario atualizar(int id, Funcionario funcionarioAtualizado) {
+    public Funcionario atualizar(Integer id, Funcionario funcionarioAtualizado) {
         Funcionario funcionarioExistente = buscarFuncionario(id);
 
         if (funcionarioExistente == null) {
@@ -52,7 +52,7 @@ public class FuncionarioService {
         return funcionarioExistente;
     }
 
-    public Funcionario atualizarFuncionario(int id, Funcionario funcionarioAtualizado) {
+    public Funcionario atualizarFuncionario(Integer id, Funcionario funcionarioAtualizado) {
         Funcionario funcionarioExistente = buscarFuncionario(id);
 
         if (funcionarioExistente == null) {
@@ -94,7 +94,7 @@ public class FuncionarioService {
         return funcionarioExistente;
     }
 
-    public String deletar(int id) {
+    public String deletar(Integer id) {
         Funcionario funcionarioExistente = buscarFuncionario(id);
 
         if (funcionarioExistente == null) {

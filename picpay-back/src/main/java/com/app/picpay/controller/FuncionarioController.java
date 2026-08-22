@@ -46,7 +46,7 @@ public class FuncionarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Funcionario> buscarFuncionario(@PathVariable int id) {
+    public ResponseEntity<Funcionario> buscarFuncionario(@PathVariable Integer id) {
         Funcionario funcionario = service.buscarFuncionario(id);
 
         if (funcionario == null) {
@@ -57,7 +57,7 @@ public class FuncionarioController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Funcionario> atualizar(@PathVariable int id, @RequestBody Funcionario funcionario) {
+    public ResponseEntity<Funcionario> atualizar(@PathVariable Integer id, @RequestBody Funcionario funcionario) {
         Funcionario atualizado = service.atualizar(id, funcionario);
 
         if (atualizado == null) {
@@ -68,7 +68,7 @@ public class FuncionarioController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Funcionario> atualizarFuncionario(@PathVariable int id, @RequestBody Funcionario funcionario) {
+    public ResponseEntity<Funcionario> atualizarFuncionario(@PathVariable Integer id, @RequestBody Funcionario funcionario) {
         Funcionario atualizado = service.atualizarFuncionario(id, funcionario);
 
         if (atualizado == null) {
@@ -79,7 +79,7 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletar(@RequestParam int id) {
+    public ResponseEntity<String> deletar(@RequestParam Integer id) {
         String mensagem = service.deletar(id);
 
         if (mensagem.contains("não encontrado")) {
