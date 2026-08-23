@@ -1,0 +1,195 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #EFEFEF; 
+}
+
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background-color: #1E5C2B; 
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    width: 100%;
+}
+
+.logo {
+    height: 150px;
+}
+
+/* Main */
+.main-content {
+    max-width: 1400px; 
+    margin: 0 auto;    
+    padding: 40px 0px;
+}
+
+.welcome-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #4A4A4A;
+    margin-bottom: 30px;
+}
+
+/* Cards */
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border: 1px solid #7FA485;
+    border-radius: 16px;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-label {
+    font-size: 14px;
+    color: #7A7A7A;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.card-value {
+    font-size: 32px;
+    font-weight: 500;
+    color: #333333;
+}
+
+/* Título e Barra de Ações */
+.table-header-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #4A4A4A;
+}
+
+.actions-group {
+    display: flex;
+    gap: 15px;
+}
+
+.search-box {
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    width: 250px;
+}
+
+.search-icon {
+    width: 18px;
+    margin-right: 10px;
+    opacity: 0.5;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+}
+
+.btn-novo {
+    background-color: #1E5C2B;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.btn-novo:hover {
+    background-color: #164620;
+}
+
+.btn-icon {
+    width: 16px;
+}
+
+/* Tabela Customizada */
+.table-container {
+    width: 100%;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; 
+}
+
+.custom-table th {
+    text-align: left;
+    padding: 0 20px 5px 20px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Linhas da Tabela */
+.custom-table td {
+    background-color: #E2E2E2;
+    padding: 16px 20px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.custom-table td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.custom-table td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Botões de Ação na Tabela */
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.action-icon {
+    width: 20px;
+}
