@@ -79,7 +79,7 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletar(@RequestParam Integer id) {
+    public ResponseEntity<String> deletar(@PathVariable Integer id) {
         String mensagem = service.deletar(id);
 
         if (mensagem.contains("não encontrado")) {

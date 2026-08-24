@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PicPay - Painel Administrativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <img src="images/logo.svg" alt="PicPay" class="logo">
+        </header>
+        
+        <main class="main-content">
+            <h1 class="welcome-title">Bem-vindo ao painel administrativo</h1>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <span class="card-label">Total</span>
+                    <span class="card-value" id="count-total">0</span>
+                </div>
+                <div class="card">
+                    <span class="card-label">Em análise</span>
+                    <span class="card-value" id="count-analise">0</span>
+                </div>
+                <div class="card">
+                    <span class="card-label">Aprovados</span>
+                    <span class="card-value" id="count-aprovados">0</span>
+                </div>
+                <div class="card">
+                    <span class="card-label">Reprovados</span>
+                    <span class="card-value" id="count-reprovados">0</span>
+                </div>
+                <div class="card">
+                    <span class="card-label">PicPay Lovers</span>
+                    <span class="card-value" id="count-contratados">0</span>
+                </div>
+            </div>
+
+            <div class="table-header-area">
+                <h2 class="section-title">Funcionários</h2>
+                
+                <div class="actions-group">
+                    <div class="search-box">
+                        <img src="images/search-icon.svg" alt="Buscar" class="search-icon">
+                        <input type="text" id="input-pesquisa" placeholder="Buscar">
+                    </div>
+                    <button class="btn-novo" onclick="abrirModalCadastro()">
+                        <img src="images/add-icon.svg" alt="+" class="btn-icon"> Novo candidato
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Departamento</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-funcionarios">
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay hidden"></div>
+
+    <!-- 1. POP-UP DE CADASTRO -->
+    <div id="modal-cadastro" class="modal hidden">
+    <div class="modal-content">
+        <h2>Adicionar candidato</h2>
+        <form id="form-cadastro">
+        <div class="form-group">
+            <label>Nome completo</label>
+            <input type="text" id="cad-nome" placeholder="Insira o nome completo" required />
+        </div>
+        <div class="form-group">
+            <label>Endereço de email</label>
+            <input type="email" id="cad-email" placeholder="Insira o endereço de email" required />
+        </div>
+        <div class="form-group">
+            <label>Telefone</label>
+            <input type="text" id="cad-telefone" placeholder="Insira o telefone" />
+        </div>
+        <div class="form-group">
+            <label>Cargo</label>
+            <input type="text" id="cad-cargo" placeholder="Insira o cargo" required />
+        </div>
+        <div class="form-group">
+            <label>Departamento</label>
+            <input type="text" id="cad-departamento" placeholder="Insira o departamento" />
+        </div>
+        <div class="form-group">
+            <label>Cidade</label>
+            <input type="text" id="cad-cidade" placeholder="Insira a cidade" />
+        </div>
+        <div class="form-row">
+            <div class="form-group half">
+            <label>Salário</label>
+            <input type="number" step="0.01" id="cad-salario" placeholder="Insira o salário" />
+            </div>
+            <div class="form-group half">
+            <label>Status</label>
+            <select id="cad-status">
+                <option value="EM_ANALISE">Em análise</option>
+                <option value="APROVADO">Aprovados</option>
+                <option value="REPROVADO">Reprovados</option>
+                <option value="PICPAY_LOVERS">PicPay Lovers</option>
+            </select>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button type="submit" class="btn-primary">Cadastrar</button>
+            <button type="button" class="btn-secondary" onclick="closeModals()">Cancelar</button>
+        </div>
+        </form>
+    </div>
+    </div>
+
+    <!-- 2. POP-UP DE EDIÇÃO -->
+    <div id="modal-edicao" class="modal hidden">
+    <div class="modal-content">
+        <h2>Editar funcionário</h2>
+        <form id="form-edicao">
+        <input type="hidden" id="edit-id" />
+        <div class="form-group">
+            <label>Nome completo</label>
+            <input type="text" id="edit-nome" placeholder="Insira o nome completo" required />
+        </div>
+        <div class="form-group">
+            <label>Endereço de email</label>
+            <input type="email" id="edit-email" placeholder="Insira o endereço de email" required />
+        </div>
+        <div class="form-group">
+            <label>Telefone</label>
+            <input type="text" id="edit-telefone" placeholder="Insira o telefone" />
+        </div>
+        <div class="form-group">
+            <label>Cargo</label>
+            <input type="text" id="edit-cargo" placeholder="Insira o cargo" required />
+        </div>
+        <div class="form-group">
+            <label>Departamento</label>
+            <input type="text" id="edit-departamento" placeholder="Insira o departamento" />
+        </div>
+        <div class="form-group">
+            <label>Cidade</label>
+            <input type="text" id="edit-cidade" placeholder="Insira a cidade" />
+        </div>
+        <div class="form-row">
+            <div class="form-group half">
+            <label>Salário</label>
+            <input type="number" step="0.01" id="edit-salario" placeholder="Insira o salário" />
+            </div>
+            <div class="form-group half">
+            <label>Status</label>
+            <select id="edit-status">
+                <option value="EM_ANALISE">Em análise</option>
+                <option value="APROVADO">Aprovados</option>
+                <option value="REPROVADO">Reprovados</option>
+                <option value="PICPAY_LOVERS">PicPay Lovers</option>
+            </select>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button type="submit" class="btn-primary">Editar</button>
+            <button type="button" class="btn-secondary" onclick="closeModals()">Cancelar</button>
+        </div>
+        </form>
+    </div>
+    </div>
+
+    <!-- 3. POP-UP DE CONFIRMAÇÃO DE DELEÇÃO -->
+    <div id="modal-deletar" class="modal hidden">
+    <div class="modal-content text-center">
+        <h3>Você tem certeza que deseja excluir este registro?</h3>
+        <p class="subtitle">Você não poderá recuperar esse registro após excluir</p>
+        <div class="modal-actions center">
+        <button type="button" class="btn-secondary" onclick="closeModals()">Cancelar</button>
+        <button type="button" class="btn-danger" id="btn-confirmar-deletar">Excluir</button>
+        </div>
+    </div>
+    </div>
+
+    <!-- POP-UPS SUCESSO / ERRO -->
+    <div id="modal-feedback" class="modal hidden">
+    <div class="modal-content text-center small-modal">
+        <div id="feedback-icon" class="icon-container"></div>
+        <h3 id="feedback-message">Mensagem aqui</h3>
+        <div class="modal-actions center">
+        <button type="button" class="btn-primary" onclick="closeModals()">Fechar</button>
+        </div>
+    </div>
+    </div>
+
+    <script src="js/api.js"></script>
+</body>
+</html>
