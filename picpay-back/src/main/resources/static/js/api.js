@@ -202,7 +202,7 @@ function abrirModalEdicao(funcionario) {
 
 function abrirModalDeletar(id) {
     closeModals();
-    idDelecaoAtual = id; 
+    idDelecaoAtual = Number(id); 
     document.getElementById('modal-deletar').classList.remove('hidden');
     overlay.classList.remove('hidden');
 }
