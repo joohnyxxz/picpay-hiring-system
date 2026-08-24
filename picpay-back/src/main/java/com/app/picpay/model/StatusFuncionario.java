@@ -4,5 +4,5 @@ public enum StatusFuncionario {
     EM_ANALISE,
     APROVADO,
     REPROVADO,
-    CONTRATADO
+    PICPAY_LOVERS
 }
